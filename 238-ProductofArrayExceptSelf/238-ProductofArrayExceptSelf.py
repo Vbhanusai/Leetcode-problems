@@ -1,22 +1,20 @@
 class Solution:
     def productExceptSelf(self, nums: List[int]) -> List[int]:
+            n = len(nums)
+            p = 1
+            zero_count = 0
+            out = [0] * n
+
+            for i in nums:
+                if(i != 0): p *= i
+                else: zero_count += 1
+
+            if zero_count > 1: return out
+
+            for i in range(n):
+                if (zero_count > 0 and nums[i] != 0): out[i] = 0
+                elif(zero_count > 0 and nums[i] == 0): out[i] = p
+                else: out[i] = p//nums[i]
+
+            return out
         
-        # compute suffix product array
-        suffix_arr = [1 for i in range(len(nums))]
-        for i in range(len(nums)-2,-1,-1):
-            suffix_arr[i]=suffix_arr[i+1]*nums[i+1]
-
-        # store prefix product in a variable
-        prefix_prod  = 1
-
-        #iterate over array and find product of prefix array and suffix array of each element
-        for i in range(len(nums)):
-            curr_ele  = nums[i]
-
-            # product of suffix array and prefix array
-            nums[i] = prefix_prod*suffix_arr[i]
-
-            #update prefix product
-            prefix_prod*=curr_ele
-
-        return nums
