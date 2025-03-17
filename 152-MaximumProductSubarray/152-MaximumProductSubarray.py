@@ -1,9 +1,10 @@
+// Last updated: 3/17/2025, 10:22:17 AM
 class Solution:
     def maxProduct(self, nums: List[int]) -> int:
         # initialize prefix, suffix and ans
         prefix = 1
         suffix = 1
-        ans = -float('inf')
+        ans = float('-inf')
 
         #iterate over nums
         for i in range(len(nums)):
