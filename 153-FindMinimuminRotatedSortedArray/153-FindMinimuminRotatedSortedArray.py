@@ -1,3 +1,4 @@
+// Last updated: 3/17/2025, 12:14:29 PM
 class Solution:
     def findMin(self, nums: List[int]) -> int:
         # Take two pointers low and high
@@ -5,7 +6,7 @@ class Solution:
         ans = float('inf')
         while low<=high:
             # This range is completely sorted
-            # low element is smallest element
+            # low element is smallest element in the range
             if nums[low]<=nums[high]:
                 ans = min(ans,nums[low])
                 return ans
